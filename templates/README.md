@@ -1,14 +1,14 @@
 # Template Read Me
 
-[![](https://pushme-pullyou.github.io/assets/icons/mark-github.svg )](https://github.com/pushme-pullyou/tootoo-2022/ "Source code on GitHub" ) [TT 2022]( https://pushme-pullyou.github.io/tootoo-2022/ "Home page" ) / [Lib Templates Read Me]( https://github.com/pushme-pullyou/tootoo-2022/tree/main/lib-templates/ "2022-08-04" )
+[![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYouAssets]( https://pushme-pullyou.github.io/assets/ "Home page" ) / [PushMe PullYou Templates Read Me]( https://github.com/pushme-pullyou/assets/tree/main/templates/ "2023-01-10" )
 
 
 <!--@@@
-<div class=iframe-resize ><iframe src=https://pushme-pullyou.github.io/tootoo-2022/lib-templates/ height=100% width=100% ></iframe></div>
+<div class=iframe-resize ><iframe src=https://pushme-pullyou.github.io/assets/templates/ height=100% width=100% ></iframe></div>
 _"Lib Templates Read Me" in a resizable window_
 @@@-->
 
-## Full Screen: [Lib Templates]( https://pushme-pullyou.github.io/tootoo-2022/lib-templates/ )
+## Full Screen: [Lib Templates]( https://pushme-pullyou.github.io/assets/templates/ )
 
 The files to use as templates are in the latest dated folder
 
@@ -39,6 +39,9 @@ The files to use as templates are in the latest dated folder
 
 ## Change Log
 
+### 2023-01-10
+
+* This year's version
 
 ### 2022-08-04
 
