@@ -4,8 +4,8 @@
 
 <!--@@@
 <div class=iframe-resize ><iframe src=https://pushme-pullyou.github.io/assets/templates/ height=100% width=100% ></iframe></div>
-@@@-->
 _"Lib Templates Read Me" in a resizable window_
+@@@-->
 
 ## Full Screen: [Lib Templates]( https://pushme-pullyou.github.io/assets/templates/ )
 
