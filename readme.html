@@ -9,7 +9,7 @@
 	<meta name="description"
 		content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash.">
 	<meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS">
-	<meta name="version" content="2023-01-10">
+	<meta name="version" content="2023-01-22">
 
 	<style>
 		/* Copyright 2022 Theo Armour. MIT License */
@@ -145,7 +145,7 @@
 			xhr.open( "get", url, true );
 			xhr.onload = () => {
 				let txt = xhr.responseText;
-				txt = txt.replace( /\<!--@@@/, "" ).replace( /\@@@-- >/, "" );
+				txt = txt.replace( /\<!--@@@/, "" ).replace( /\@@@-->/, "" );
 				divContent.innerHTML = new showdown.Converter( options ).makeHtml( txt );
 				window.scrollTo( 0, 0 );
 			};
