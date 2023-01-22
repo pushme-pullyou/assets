@@ -2,16 +2,18 @@
 
 [![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" ) / [PushMe PullYou Templates Read Me]( https://github.com/pushme-pullyou/assets/tree/main/templates/ "2023-01-10" )
 
+_This file describes the template files. The files to copy are in a dated sub-folder_
+
 <!--@@@
 <div class=iframe-resize ><iframe src=https://pushme-pullyou.github.io/assets/templates/ height=100% width=100% ></iframe></div>
-_"Lib Templates Read Me" in a resizable window_
+_"Templates Read Me" in a resizable window_
 @@@-->
 
-## Full Screen: [Lib Templates]( https://pushme-pullyou.github.io/assets/templates/ )
+## Full Screen: [Templates]( https://pushme-pullyou.github.io/assets/templates/ )
 
-The files to use as templates are in the latest dated folder
 
 ## Concept
+
 
 ## Text you can include in read me files
 
@@ -38,11 +40,8 @@ The files to use as templates are in the latest dated folder
 
 ## Change Log
 
-### 2023-01-10
 
-* This year's version
-
-### 2022-08-04
+### 2023-01-22
 
 * First commit
 
