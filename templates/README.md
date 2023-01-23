@@ -1,6 +1,4 @@
-# Template Read Me
-
-[![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" ) / [PushMe PullYou Templates Read Me]( https://github.com/pushme-pullyou/assets/tree/main/templates/ "2023-01-10" )
+# [![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" ) / [Templates Read Me]( https://github.com/pushme-pullyou/assets/tree/main/templates/ "2023-01-22" )
 
 _This file describes the template files. The files to copy are in a dated sub-folder_
 

@@ -80,7 +80,7 @@
 			background: crimson;
 		}
 
-/* read me footer */
+		/* read me footer */
 		.aDingbat {
 			text-decoration: none;
 			font-size: 2rem;
@@ -123,6 +123,12 @@
 			location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = location.hash.slice( 1 );
 
 			window.addEventListener( "hashchange", onHashChange, false );
+
+			if ( location.protocol === "https:" ) {
+
+				window.history.pushState( "", "", "./" + location.hash );
+
+			}
 
 		}
 
