@@ -7,6 +7,7 @@
 
 ## Concept
 
+* Assets such as SVg icons that can be used in other repositories
 
 ## Text you can include in read me files
 
@@ -24,7 +25,7 @@
 
 ## To Do / Wish List
 
-Update to oprn with a TooToo
+Update to open with a TooToo
 
 ## Issues
 
