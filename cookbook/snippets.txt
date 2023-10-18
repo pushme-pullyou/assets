@@ -1,4 +1,4 @@
-// copyright 2021 Theo Armour. MIT license.
+// copyright 2023 Theo Armour. MIT license.
 /* global COR, main, divMainContent, showdown */
 // jshint esversion: 6
 // jshint loopfunc: true
@@ -14,8 +14,9 @@ Unicode Character “≡” (U+2261) https://www.compart.com/en/unicode/U+2261
 
 
 ##
+
 <span class="info"><img class=infoImg height=30px
-		src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/noun_Information_585560.svg">
+		src="https://pushme-pullyou.github.io/assets/svg/noun_Information_585560.svg">
 	<span class="infoTooltip gmd-5">
 		Howdy! test test test test test abc 123
 	</span>
