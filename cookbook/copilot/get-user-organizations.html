@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<input type="text" id="username" placeholder="Enter GitHub username">
+	<button onclick="getOrgs()">Get Organizations</button>
+	<div id="orgs"></div>
+
+	<script>
+		function getOrgs () {
+			const username = document.getElementById( 'username' ).value;
+			fetch( `https://api.github.com/users/${ username }/orgs` )
+				.then( response => response.json() )
+				.then( data => {
+					const orgsDiv = document.getElementById( 'orgs' );
+					orgsDiv.innerHTML = ''; // clear the div
+					data.forEach( org => {
+						console.log( "org", org, org.html_url );
+						const a = document.createElement( 'a' );
+						a.href = "https://github.com/" + org.login;
+						a.textContent = org.login;
+						orgsDiv.appendChild( a );
+						orgsDiv.appendChild( document.createElement( 'br' ) ); // line break
+					} );
+				} )
+				.catch( error => console.error( 'Error:', error ) );
+		}
+	</script>
+</body>
+
+</html>
