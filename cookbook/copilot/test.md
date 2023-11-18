@@ -7,7 +7,7 @@ test
 ## Things we design
 
 - [https://jaanga.github.io/moving-manuals/](<https://jaanga.github.io/moving-manuals/>)
-- More
+- More stuff
 - mmm
 - nnn nnnnnnnnnnnnn
 - [http://wikihouse.github.io/viewer-experiments/](<http://wikihouse.github.io/viewer-experiments/>)
