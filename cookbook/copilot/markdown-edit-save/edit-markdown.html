@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<input type="file" id="fileInput" accept=".md">
+	<button id="saveButton">Save as Markdown</button>
+	<div id="fileContent" contentEditable="true"></div>
+
+	<!-- https://github.com/showdownjs/showdown -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+
+	<script>
+
+		const options = { openLinksInNewWindow: false, excludeTrailingPunctuationFromURLs: true, ghMention: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true };
+
+
+		const converter = new showdown.Converter( options );
+		converter.setFlavor( 'github' );
+
+		document.getElementById( 'fileInput' ).addEventListener( 'change', function ( e ) {
+			const file = e.target.files[ 0 ];
+			if ( !file ) {
+				return;
+			}
+			const reader = new FileReader();
+			reader.onload = function ( e ) {
+				const markdown = e.target.result;
+
+				let html = converter.makeHtml( markdown );
+				html = DOMPurify.sanitize( html );
+				document.getElementById( 'fileContent' ).innerHTML = html;
+			};
+			reader.readAsText( file );
+		} );
+
+	document.getElementById( 'saveButton' ).addEventListener( 'click', function () {
+		const html = document.getElementById( 'fileContent' ).innerHTML;
+		let markdown = converter.makeMarkdown( html );
+
+		markdown = markdown.replace( /\n   \n/g, "" );
+		markdown = markdown.replace( /\n- /g, "\n* " );
+		markdown = markdown.replace( /\n---/g, "\n***" );
+		markdown = markdown.replace( /\n\<\!-- --\>/g, "" );
+
+
+		const blob = new Blob( [ markdown ], { type: "text/plain;charset=utf-8" } );
+		const url = URL.createObjectURL( blob );
+		const link = document.createElement( 'a' );
+		link.href = url;
+		link.download = 'test.md';
+		link.style.display = 'none';
+		document.body.appendChild( link );
+		link.click();
+		document.body.removeChild( link );
+	} );
+	</script>
+</body>
+
+</html>

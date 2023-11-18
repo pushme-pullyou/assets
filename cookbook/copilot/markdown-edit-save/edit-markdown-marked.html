@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<input type="file" id="fileInput" accept=".md">
+	<div id="fileContent" contentEditable="true"></div>
+	<button id="saveButton">Save as Markdown</button>
+
+	<!-- https://marked.js.org/ -->
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/turndown/dist/turndown.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+	<script>
+		marked.setOptions( {
+			gfm: true
+		} );
+
+		document.getElementById( 'fileInput' ).addEventListener( 'change', function ( e ) {
+			const file = e.target.files[ 0 ];
+			if ( !file ) {
+				return;
+			}
+			const reader = new FileReader();
+			reader.onload = function ( e ) {
+				const markdown = e.target.result;
+				let html = marked.parse( markdown );
+				html = DOMPurify.sanitize( html );
+				document.getElementById( 'fileContent' ).innerHTML = html;
+			};
+			reader.readAsText( file );
+		} );
+
+		document.getElementById( 'saveButton' ).addEventListener( 'click', function () {
+			const turndownService = new TurndownService( { headingStyle: 'atx' } );
+			turndownService.addRule( 'headings', {
+				filter: [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ],
+				replacement: function ( content, node ) {
+					var hLevel = node.nodeName.charAt( 1 );
+					var hashes = '';
+					for ( var i = 0; i < hLevel; i++ ) {
+						hashes += '#';
+					}
+					return '\n\n' + hashes + ' ' + content + '\n\n';
+				}
+			} );
+			const html = document.getElementById( 'fileContent' ).innerHTML;
+			let markdown = turndownService.turndown( html );
+			markdown = markdown.replace( /\n   /g, "" );
+			const blob = new Blob( [ markdown ], { type: 'text/plain' } );
+			const url = URL.createObjectURL( blob );
+			const a = document.createElement( 'a' );
+			a.href = url;
+			a.download = 'test.md';
+			a.click();
+		} );
+	</script>
+</body>
+
+</html>

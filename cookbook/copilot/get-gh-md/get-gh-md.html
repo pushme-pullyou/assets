@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<input type="text" id="token" placeholder="Paste your token here">
+	<button onclick="fetchFile()">Fetch File</button>
+	<button onclick="saveFile()">Save File</button>
+	<div id="content" contenteditable="true"></div>
+
+	<!-- Include Showdown.js -->
+	<script src="https://unpkg.com/showdown@2.1.0/dist/showdown.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+
+	<script>
+		// Create a new showdown converter
+		const converter = new showdown.Converter();
+
+		let githubToken = localStorage.getItem( 'githubToken' );
+
+		if ( githubToken ) {
+			document.getElementById( 'token' ).value = githubToken;
+		}
+
+		const fetchFile = () => {
+			const tokenInput = document.getElementById( 'token' );
+
+			if ( !githubToken ) {
+				githubToken = window.prompt( 'Please enter your GitHub token' );
+				localStorage.setItem( 'githubToken', githubToken );
+			}
+
+			tokenInput.value = githubToken;
+
+			// Fetch the markdown file
+			fetch( 'https://api.github.com/repos/pushme-pullyou/assets/contents/cookbook/copilot/test.md', {
+				headers: {
+					'Authorization': `token ${ githubToken }`
+				}
+			} )
+				.then( response => response.json() )
+				.then( data => {
+
+					// Store the SHA of the file
+					sha = data.sha;
+
+					// The content is base64 encoded, so we need to decode it
+					const text = atob( data.content );
+
+					// Convert the markdown to HTML
+					const html = converter.makeHtml( text );
+
+					// Sanitize the HTML
+					const cleanHtml = DOMPurify.sanitize( html );
+
+					// Insert the HTML into the page
+					document.getElementById( 'content' ).innerHTML = cleanHtml;
+				} );
+		};
+
+		function saveFile () {
+			const token = localStorage.getItem( 'githubToken' );
+
+			if ( !token ) {
+				token = window.prompt( 'Please enter your GitHub token' );
+				localStorage.setItem( 'githubToken', token );
+			}
+
+			const content = document.getElementById( 'content' ).innerHTML;
+			let markdown = converter.makeMarkdown( content );
+
+			markdown = markdown.replace( /\n   \n/g, "" );
+			markdown = markdown.replace( /\n- /g, "\n* " );
+			markdown = markdown.replace( /\n---/g, "\n***" );
+			markdown = markdown.replace( /\n\<\!-- --\>/g, "" );
+
+			const encodedContent = btoa( markdown );
+
+			fetch( 'https://api.github.com/repos/pushme-pullyou/assets/contents/cookbook/copilot/test.md', {
+				method: 'PUT',
+				headers: {
+					'Authorization': 'token ' + token
+				},
+				body: JSON.stringify( {
+					message: 'Update file',
+					content: encodedContent,
+					sha: sha  // Include the SHA in the request body
+				} )
+			} )
+				.then( response => response.json() )
+				.then( data => {
+					if ( data.commit ) {
+						alert( 'File saved successfully' );
+					} else if ( data.message ) {
+						alert( 'Error saving file: ' + data.message );
+					}
+				} );
+		}
+
+	</script>
+</body>
+
+</html>
