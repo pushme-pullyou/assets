@@ -2,14 +2,8 @@
 <html lang=en >
 <head>
 <meta charset=utf-8 >
-<title>404 Error Page</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain">
-<meta name="description"
-	content="HTML file displayed by the host when the requested page is not found">
-<meta name="keywords" content="HTTP, protocol">
-<meta name="version" content="2023-12-30">
 <meta name=author content="Theo Armour" >
-<meta name=creator content="https://github.com/pushme-pullyou/assets/tree/main/templates">
+<title></title>
 </head>
 <body>
 <script>
@@ -20,7 +14,7 @@
 	document.body.style.cssText = `font: bold 12pt monospace; height: ${ window.innerHeight }px; overflow: hidden;`;
 
 	const user = "pushme-pullyou";
-	const repo = "assets";
+	const repo = "2023";
 	const info = document.body.appendChild( document.createElement( "div" ) );
 
 	document.title = `404 for ${ user }${ repo }`;
@@ -29,8 +23,7 @@
 	<h1 title="This is the 404 error page" >Oops</h1>
 	<h2>Website: <a href="https://${ user }.github.io/${ repo }" title="Go to the app" >${ user }.github.io/${ repo }</a></h2>
 	<h2>Source code: <a href=https://github.com/${ user }/${ repo } title="Go to the source code" >github.com/${ user }/${ repo }</a></h2>
-	<p><i>Stuff here is rarely deleted, but it does get moved around. The page you are looking for is probably here somewhere.</i></p>
-	<h1>❦</h1>
+	<p><i>Stuff here is rarely deleted, but it does move around. It's here somewhere.</i></p>
 </div>`;
 
 	toggleBackgroundGradient();
