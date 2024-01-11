@@ -6,10 +6,12 @@
 	<title>Open Index or Markdown</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain">
-	<meta name="description"
-		content="File wrangler: Opens HTML or Markdown files. Passes location.hash.">
+	<meta name="description" content="File wrangler: Opens HTML or Markdown files. Passes location.hash.">
 	<meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS">
-	<meta name="version" content="2023-01-22">
+	<meta name="version" content="2024-01-10">
+	<meta name="author" content="Theo Armour">
+	<meta name="creator" content="https://github.com/pushme-pullyou/assets/tree/main/templates-folder">
+
 
 	<style>
 		/* Copyright 2023 Theo Armour. MIT License */
@@ -28,7 +30,7 @@
 		}
 
 		a {
-			color: crimson;
+			color: #880000;
 			text-decoration: none;
 		}
 
@@ -82,7 +84,7 @@
 		}
 
 		::-webkit-scrollbar-thumb {
-			background: crimson;
+			background: #880000;
 		}
 
 		/* read me footer */
@@ -111,60 +113,108 @@
 
 	<script>
 
+		const defaultFile = "README.md";
 
-		defaultFile = "README.md";
+		// Set the flavor of the Markdown converter
+		showdown.setFlavor( "github" );
 
-		//location.hash = ""; // test
-		//location.hash = "../style/style-sample-tags.html"
-
-		init();
-
-		function init () {
-
-			showdown.setFlavor( "github" );
-
-			if ( !location.hash ) { location.hash = defaultFile; }
-
-			location.hash.endsWith( ".md" ) ? onHashChange() : window.location.href = location.hash.slice( 1 );
-
-			window.addEventListener( "hashchange", onHashChange, false );
-
-			if ( location.protocol === "https:" ) {
-
-				window.history.pushState( "", "", "./" + location.hash );
-
-			}
-
+		// If there's no hash in the URL, set it to the default file
+		if ( !location.hash ) {
+			location.hash = defaultFile;
 		}
 
+		// If the hash ends with ".md", call onHashChange. Otherwise, navigate to the URL specified by the hash
+		if ( location.hash.endsWith( ".md" ) ) {
+			onHashChange();
+		} else {
+			window.location.href = location.hash.slice( 1 );
+		}
+
+		// Listen for changes to the hash in the URL
+		window.addEventListener( "hashchange", onHashChange, false );
+
+		// If the page is loaded over HTTPS, remove the hash from the URL
+		if ( location.protocol === "https:" ) {
+			window.history.pushState( "", "", "./" + location.hash );
+		}
 
 		function onHashChange () {
 
-			// if no file extension then probably an internal link
-			if ( !location.hash.includes( "." ) ) { return; }
+			//getPassword();
 
+			// If the hash doesn't include a ".", it's probably an internal link, so do nothing
+			if ( !location.hash.includes( "." ) ) {
+				return;
+			}
+
+			// Get the URL from the hash and update the document title
 			const url = location.hash.slice( 1 );
-			const txt = url.split( "/" ).pop();
-			let title = txt
-				.split( "-" )
-				.filter( x => x.length > 0 )
-				.map( ( x ) => ( x.charAt( 0 ).toUpperCase() + x.slice( 1 ) ) )
-				.join( " " );
+			const fileName = url.split( "/" ).pop();
+			const title = formatTitle( fileName );
 			document.title = title;
-			const options = { openLinksInNewWindow: false, excludeTrailingPunctuationFromURLs: true, ghMention: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true };
 
+			// Set the options for the Markdown converter
+			const options = {
+				openLinksInNewWindow: false,
+				excludeTrailingPunctuationFromURLs: true,
+				ghMention: true,
+				simplifiedAutoLink: true,
+				simpleLineBreaks: true,
+				emoji: true
+			};
+
+			// Fetch the file and update the page content
+			fetchFile( url, options );
+		}
+
+
+		function getPassword () {
+			const correctPassword = 'ecat88';
+			let userPassword = localStorage.getItem( 'password' );
+
+			// Check if the password is not set, empty, or "null"
+			if ( !userPassword || userPassword === "" || userPassword === "null" ) {
+				userPassword = prompt( 'Please enter the password:' );
+				// Check if the user clicked "Cancel"
+				if ( userPassword === null ) {
+					displayAccessDenied();
+					return;
+				}
+				localStorage.setItem( 'password', userPassword );
+			}
+
+			// Check if the entered password is incorrect
+			if ( userPassword !== correctPassword ) {
+				displayAccessDenied();
+				localStorage.removeItem( 'password' ); // Remove the incorrect password from local storage
+			}
+		}
+
+		function displayAccessDenied () {
+			document.body.innerHTML = '<h1>Access denied</h1><p>Please reload and try again</p>';
+		}
+
+		function formatTitle ( fileName ) {
+			return fileName
+				.split( "-" )
+				.filter( word => word.length > 0 )
+				.map( word => word.charAt( 0 ).toUpperCase() + word.slice( 1 ) )
+				.join( " " );
+		}
+
+		function fetchFile ( url, options ) {
 			const xhr = new XMLHttpRequest();
+
 			xhr.open( "get", url, true );
 			xhr.onload = () => {
 				let txt = xhr.responseText;
-				txt = txt.replace( /\<!--@@@/, "" ).replace( /\@@@-->/, "" );
+				txt = txt.replace( /\<!--@@@/, "" ).replace( /\@@@--\>/, "" );
 				divContent.innerHTML = new showdown.Converter( options ).makeHtml( txt );
 				window.scrollTo( 0, 0 );
 			};
 			xhr.send( null );
 
 		}
-
 	</script>
 </body>
 

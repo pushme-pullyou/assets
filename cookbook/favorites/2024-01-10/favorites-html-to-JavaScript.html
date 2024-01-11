@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Bookmark Converter</title>
+</head>
+
+<body>
+	<input type="file" id="fileInput">
+	<button onclick="convertToCSV()">Convert to CSV</button> <a id="downloadLink" style="display: none">Download CSV</a>
+	<textarea id="csvOutput" rows="10" cols="100"></textarea>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+	<script>
+		function convertToCSV () {
+			var fileInput = document.getElementById( 'fileInput' );
+			var file = fileInput.files[ 0 ];
+			var reader = new FileReader();
+
+			reader.onload = function ( e ) {
+				// Get the HTML from the file
+				var htmlString = e.target.result;
+
+				// Parse the HTML
+				var parser = new DOMParser();
+				var doc = parser.parseFromString( htmlString, 'text/html' );
+
+				// Get all the bookmark links
+				var links = Array.from( doc.querySelectorAll( 'a' ) );
+
+				// Map the links to an array of bookmark objects
+				var bookmarks = links.map( link => {
+					var folders = [];
+					var currentElement = link;
+
+					// Traverse up the DOM tree and collect all the folder names
+					while ( currentElement = currentElement.parentElement.closest( 'DL' ) ) {
+						var folder = currentElement.previousElementSibling.textContent;
+						if ( folder ) {
+							folders.unshift( folder ); // Add the folder name to the start of the array
+						}
+					}
+
+					folders = folders.slice( 1 ); // Remove the first folder, which is the root folder
+
+					//console.log( folders );
+
+					return {
+						folder: folders.join( '/' ), // Join the folder names with slashes
+						url: link.href,
+						title: escapeAndQuote( link.textContent ),
+						note: '', // Add note here if available
+						tags: '', // Add tags here if available
+						created: new Date( link.getAttribute( 'add_date' ) * 1000 ).toISOString() // Convert the addDate attribute to an ISO string
+					};
+				} );
+
+				// Convert the bookmarks to CSV
+				var csv = 'folder,url,title,note,tags,created\n' + bookmarks.map( bookmark => {
+					return `"${ bookmark.folder }","${ bookmark.url }",${ bookmark.title },"${ bookmark.note }","${ bookmark.tags }","${ bookmark.created }"`;
+				} ).join( '\n' );
+
+				// Output the CSV
+				document.getElementById( 'csvOutput' ).value = csv;
+
+				// Create a Blob with the CSV
+				var blob = new Blob( [ csv ], { type: 'text/csv' } );
+
+				// Create a downloadable link for the Blob
+				var downloadLink = document.getElementById( 'downloadLink' );
+				downloadLink.href = URL.createObjectURL( blob );
+				downloadLink.download = 'bookmarks.csv';
+				downloadLink.style.display = 'block';
+
+				validateCSV( csv );
+
+			};
+
+			reader.readAsText( file );
+		}
+
+		function escapeAndQuote ( str ) {
+			return `"${ str.replace( /"/g, '""' ) }"`;
+		}
+
+		function validateCSV ( csvData ) {
+			Papa.parse( csvData, {
+				error: function ( err, file, inputElem, reason ) {
+					// If there's an error, log it
+					console.log( "CSV validation failed: ", reason );
+				},
+				complete: function () {
+					// If the parsing completes successfully, log it
+					console.log( "CSV validation succeeded." );
+				}
+			} );
+		}
+	</script>
+
+</body>
+
+</html>

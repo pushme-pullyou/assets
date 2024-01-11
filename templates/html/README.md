@@ -1,12 +1,12 @@
-# [![](https://pushme-pullyou.github.io/tootoo-2022/assets/icons/mark-github.svg )](https://github.com/theo-armour/qdata/ "Source code on GitHub" ) [Theo Armour qdata]( https://theo-armour.github.io/qdata/ "Home page" ) / [ZZZZZ Read Me]( https://theo-armour.github.io/qdata/#lib-templates/README.md "2022-08-04" )
+# [![](https://pushme-pullyou.github.io/tootoo-2022/assets/icons/mark-github.svg )](https://github.com/theo-armour/qdata/ "Source code on GitHub" ) [Theo Armour qdata]( https://theo-armour.github.io/qdata/ "Home page" ) / [HTML Read Me]( https://theo-armour.github.io/qdata/#lib-templates/README.md "2022-08-04" )
 
 
 <!--@@@
 <div class=iframe-resize ><iframe src=https://theo-armour.github.io/qdata/ xxxxx/ height=100% width=100% ></iframe></div>
-_"ZZZZZ" in a resizable window. One finger to rotate. Two to zoom._
+_"HTML" in a resizable window. One finger to rotate. Two to zoom._
 @@@-->
 
-## Full Screen: [ZZZZZ]( https://theo-armour.github.io/qdata/xxxxx/ )
+## Full Screen: [HTML]( https://theo-armour.github.io/qdata/xxxxx/ )
 
 
 ## Concept

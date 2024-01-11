@@ -5,7 +5,7 @@
 _"Templates Read Me" in a resizable window_
 @@@-->
 
-## Full Screen: [Templates]( https://pushme-pullyou.github.io/2023/templates-folder/ )
+## Full Screen: [Templates]( https://pushme-pullyou.github.io/assets/templates-folder/ )
 
 
 ## Concept
