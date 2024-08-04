@@ -22,15 +22,15 @@ tips
 
 tests
 
-abc  
-def  
+abc
+def
 ghi
 
 :bowtie:
 
 YAML here
 
-www.google.com.  
+www.google.com.
 example.com
 
 Mentions
@@ -106,7 +106,7 @@ Press <kbd>W</kbd> to go up, and <kbd>A</kbd> to go down.
 If you can find the <kbd>ESC</kbd>, pressing that will fire missiles ðŸš€
 ```
 
-Press W to go up, and A to go down.  
+Press W to go up, and A to go down.
 If you can find the ESC, pressing that will fire missiles ðŸš€
 
 ### Horizontal rules
@@ -198,8 +198,8 @@ text `text` text
 > quote
 ```
 
-> quote  
-> quote  
+> quote
+> quote
 > quote
 
 ### Audio
@@ -247,7 +247,7 @@ text `text` text
 
 ---
 
-## [â¦](javascript:window.scrollTo(0,0);)
+## ![â¦](javascript:window.scrollTo(0,0);)
 
 \# â¦
 
