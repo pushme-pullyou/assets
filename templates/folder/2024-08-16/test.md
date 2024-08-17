@@ -2,6 +2,8 @@
 
 ## thing 1
 
+https://example.com
+
 <details>
 
 <summary>abc def</summary>
