@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Markdown Loader</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="content"></div>
+
+	<script>
+		// Markdown content
+		const markdown = `
+# Test MD
+
+This is a test Markdown document.
+
+## Features
+
+- Easy to read
+- Easy to write
+- Supports **bold** and *italic* text
+
+## Code Example
+
+\`\`\`javascript
+function greet(name) {
+    console.log(\`Hello, \${name}!\`);
+}
+greet('World');
+\`\`\`
+
+That's it for our test!
+        `;
+
+		// Convert Markdown to HTML and insert into the page
+		document.getElementById( 'content' ).innerHTML = marked.parse( markdown );
+	</script>
+</body>
+
+</html>

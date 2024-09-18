@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Markdown Viewer</title>
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+	<input type="file" id="fileInput" />
+	<button id="removeSpacesButton">Remove Extra Spaces</button>
+	<div id="content"></div>
+
+	<script>
+		let markdownContent = '';
+
+		document.getElementById('fileInput').addEventListener('change', function (event) {
+			const file = event.target.files[0];
+			if (file && file.name === 'test.md') {
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					markdownContent = e.target.result;
+					const htmlContent = marked.parse(markdownContent);
+					document.getElementById('content').innerHTML = htmlContent;
+				};
+				reader.readAsText(file);
+			} else {
+				alert('Please select the correct file named test.md.');
+			}
+		});
+
+		document.getElementById('removeSpacesButton').addEventListener('click', function () {
+			// Remove extra line spaces between lines that start with an asterisk
+			const lines = markdownContent.split('\n');
+			const cleanedLines = [];
+			for (let i = 0; i < lines.length; i++) {
+				if (lines[i].startsWith('*') && i > 0 && lines[i - 1].trim() === '') {
+					continue; // Skip the empty line before a list item
+				}
+				cleanedLines.push(lines[i]);
+			}
+			markdownContent = cleanedLines.join('\n');
+			const htmlContent = marked.parse(markdownContent);
+			document.getElementById('content').innerHTML = htmlContent;
+		});
+	</script>
+</body>
+
+</html>
