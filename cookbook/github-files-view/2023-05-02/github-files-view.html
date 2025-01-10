@@ -46,6 +46,7 @@
 						details.appendChild( createTree( childItems, item.path + '/' ) );
 
 						folderContents.appendChild( details );
+            
 					} else if ( item.type === 'blob' ) {
 						const fileLink = document.createElement( 'a' );
 						fileLink.textContent = item.path.replace( parentPath, '' );
