@@ -1,4 +1,4 @@
-# [![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" )
+# [![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub / 2025-01-09" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" )
 
 <!--  @@@<div class=iframe-resize ><iframe src=https://pushme-pullyou.github.io/assets/ ht=100% width=100% ></iframe></div>_"Templates Read Me" in a resizable window_ @@@  -->
 
@@ -36,9 +36,10 @@ Update to open with a TooToo
 ## Change Log
 
 
-### 2023-10-13
+### 2025-01-09 ~ First Commit
 
-* Update
+* Update Readme
+* Update readme.html
 
 
 ***
