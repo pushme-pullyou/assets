@@ -1,13 +1,11 @@
-# [![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" ) / [Templates Folder Read Me]( https://github.com/pushme-pullyou/assets/tree/main/templates-folder/ "2025-01-09" )
+# [![](https://pushme-pullyou.github.io/assets/svg/octicon.svg )](https://github.com/pushme-pullyou/assets/ "Source code on GitHub" ) [PushMe PullYou Assets]( https://pushme-pullyou.github.io/assets/ "Home page" )/[Templates/Folder Read Me]( https://github.com/pushme-pullyou/assets/tree/main/templates-folder/ "2025-01-09" )
 
-_This file describes the template files. The files to copy are in dated sub-folders_
-
-<!-- @@@
+<!--@@@
 <div class=iframe-resize ><iframe src=https://pushme-pullyou.github.io/assets/templates/folder/ height=100% width=100% ></iframe></div>
 _"Templates Read Me" in a resizable window_
-@@@ -->
+@@@-->
 
-## Full Screen: [Templates]( https://pushme-pullyou.github.io/assets/templates/folder/ )
+## Full Screen: [Templates/Folder ]( https://pushme-pullyou.github.io/assets/templates/folder/ )
 
 
 ## Concept
@@ -32,6 +30,8 @@ _"Templates Read Me" in a resizable window_
 
 ## Issues
 
+* 2025-01-09 ~ this readme and parent readme need to be synched
+* 2025-01-09 ~ recreate a no password readme.html
 
 ## Links of Interest
 
@@ -42,7 +42,7 @@ _"Templates Read Me" in a resizable window_
 ### 2025-01-09
 
 * First commit
-* Update to today's read me
+
 
 ***
 
