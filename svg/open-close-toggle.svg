@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Top‑right arrow (points down‑left) -->
+  <path d="M21 3 L13 11"/>
+  <path d="M13 3 H21 V11"/>
+  <!-- Bottom‑left arrow (points up‑right) -->
+  <path d="M3 21 L11 13"/>
+  <path d="M11 21 H3 V13"/>
+</svg>
