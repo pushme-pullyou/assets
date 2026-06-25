@@ -8,4 +8,5 @@ window.TOOTOO_CONFIG = {
   subtitle: '',
   faviconLetters: 'PA',
   faviconColor: '#7b68ee',
+  faviconFile: 'favicon.ico',
 };
